@@ -1,6 +1,6 @@
 {
   "name": "@react-page-plugins/slate-table",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "react-page plugin for slate table",
   "main": "lib/index.js",
   "scripts": {
@@ -36,5 +36,12 @@
     "@tsconfig/recommended": "^1.0.1",
     "@types/styled-components": "^5.1.9",
     "typescript": "^4.2.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/junminahn/react-page-plugins.git"
+  },
+  "bugs": {
+    "url": "https://github.com/junminahn/react-page-plugins/issues"
   }
 }
