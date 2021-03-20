@@ -1,0 +1,40 @@
+{
+  "name": "@react-page-plugins/slate-table",
+  "version": "0.1.0-alpha.3",
+  "description": "react-page plugin for slate table",
+  "main": "lib/index.js",
+  "scripts": {
+    "dev": "tsc -w",
+    "build": "tsc",
+    "build-types": "yarn tsc -d --outDir types",
+    "pre-publish": "node ../../scripts/pre-publish.js --name=slate-table",
+    "sync-version": "node ../../scripts/sync-version.js --name=slate-table"
+  },
+  "keywords": [
+    "react-page",
+    "plugin",
+    "slate",
+    "table"
+  ],
+  "publishConfig": {
+    "directory": "lib"
+  },
+  "author": "Junmin Ahn",
+  "license": "MIT",
+  "dependencies": {
+    "clsx": "^1.1.1",
+    "lodash": "^4.17.21",
+    "rc-slider": "^9.7.1",
+    "react": "^17.0.1",
+    "slate": "^0.59.0",
+    "slate-history": "^0.59.0",
+    "slate-react": "^0.59.0",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@tsconfig/create-react-app": "^1.0.2",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/styled-components": "^5.1.9",
+    "typescript": "^4.2.3"
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "name": "react-page-plugins",
+  "version": "1.0.0",
+  "description": "react-page plugins",
+  "directories": {
+    "packages": "packages",
+    "example": "examples"
+  },
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "llink": "lerna link",
+    "build": "lerna run build",
+    "clean": "lerna clean",
+    "format": "git ls-files '*.js' '*.jsx' '*.ts' '*.tsx' | xargs prettier --write",
+    "lint": "git ls-files '*.js' '*.jsx' '*.ts' '*.tsx' | xargs yarn eslint"
+  },
+  "author": "Junmin Ahn",
+  "license": "MIT",
+  "private": true,
+  "workspaces": {
+    "packages": [
+      "packages/*",
+      "examples/*"
+    ]
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "chalk": "^4.1.0",
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-typescript": "^12.3.1",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.22.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "fs-extra": "^9.1.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.2.1",
+    "react": "^17.0.1",
+    "yargs": "^16.2.0"
+  }
+}
