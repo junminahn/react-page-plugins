@@ -1,4 +1,5 @@
 import React, { useCallback, useMemo, useState, useContext } from 'react';
+import cx from 'clsx';
 import startCase from 'lodash/startCase';
 import { Slate, Editable, withReact, useFocused, useSelected, useSlate } from 'slate-react';
 import { Editor, Transforms, createEditor, Descendant, Node, Element as SlateElement } from 'slate';
@@ -6,17 +7,21 @@ import { Editor, Transforms, createEditor, Descendant, Node, Element as SlateEle
 import { toggleBlock, toggleMark, isBlockActive, isMarkActive, getContext } from './core';
 
 import { emptyCell, emptyRow, emptyTable, getRow, addCell, addRow, newCell, newRow, cloneTable } from './table-builder';
-import { ThemeContext } from './theme';
 import { Icon } from './icons';
 
 const IconButton = props => {
-  const { active, icon, ...rest } = props;
-  const { Button } = useContext(ThemeContext);
+  const { active, variant, className, icon, ...rest } = props;
 
   return (
-    <Button {...rest} active={active} icon title={startCase(icon)}>
+    <button
+      {...rest}
+      active={active}
+      title={startCase(icon)}
+      className={cx('slate-table', 'button', className, variant, active === true ? 'active' : '')}
+      type="button"
+    >
       <Icon disabled={!active} name={icon} />
-    </Button>
+    </button>
   );
 };
 
@@ -165,6 +170,7 @@ export const RemoveColumn = () => {
   return (
     <IconButton
       icon="delete-column"
+      variant="warning"
       disabled={!focused}
       onMouseDown={event => {
         event.preventDefault();
@@ -192,6 +198,7 @@ export const RemoveRow = () => {
   return (
     <IconButton
       icon="delete-row"
+      variant="warning"
       disabled={!focused}
       onMouseDown={event => {
         event.preventDefault();

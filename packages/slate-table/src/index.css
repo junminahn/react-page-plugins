@@ -1,0 +1,116 @@
+.slate-table.buttons {
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  vertical-align: baseline;
+  margin: 0em 0.25em 0em 0em;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.slate-table.buttons:after {
+  content: '.';
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+
+.slate-table.buttons .button {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 0 auto;
+  flex: 1 0 auto;
+  margin: 0em;
+  border-radius: 0em;
+  margin: 0px 0px 0px 0px;
+}
+
+.slate-table.buttons .button:first-child {
+  border-left: none;
+  margin-left: 0;
+  border-top-left-radius: 0.28571429rem;
+  border-bottom-left-radius: 0.28571429rem;
+}
+
+.slate-table.buttons .button:last-child {
+  border-right: none;
+  margin-right: 0;
+  border-top-right-radius: 0.28571429rem;
+  border-bottom-right-radius: 0.28571429rem;
+}
+
+.slate-table.button {
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-block;
+  min-height: 1em;
+  outline: none;
+  border: none;
+  vertical-align: baseline;
+  background: #e0e1e2 none;
+  color: rgba(0, 0, 0, 0.6);
+  margin: 0em 0.25em 0em 0em;
+  padding: 0.78571429em;
+  text-transform: none;
+  text-shadow: none;
+  font-weight: bold;
+  line-height: 1em;
+  font-style: normal;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.28571429rem;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, background 0.1s ease,
+    -webkit-box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, background 0.1s ease,
+    -webkit-box-shadow 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease;
+  transition: opacity 0.1s ease, background-color 0.1s ease, color 0.1s ease, box-shadow 0.1s ease, background 0.1s ease,
+    -webkit-box-shadow 0.1s ease;
+  will-change: '';
+  -webkit-tap-highlight-color: transparent;
+}
+
+.slate-table.button:hover {
+  background-color: #cacbcd;
+  background-image: none;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  box-shadow: 0px 0px 0px 1px transparent inset, 0px 0em 0px 0px rgba(34, 36, 38, 0.15) inset;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.slate-table.button.active {
+  background-color: #c0c1c2;
+  background-image: none;
+  -webkit-box-shadow: 0px 0px 0px 1px transparent inset;
+  box-shadow: 0px 0px 0px 1px transparent inset;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.slate-table.button.active:hover {
+  background-color: #c0c1c2;
+  background-image: none;
+  color: rgba(0, 0, 0, 0.95);
+}
+
+.slate-table.button.active:active {
+  background-color: #c0c1c2;
+  background-image: none;
+}
+
+.slate-table.button.warning {
+  background: #f54121 none;
+}
+
+.slate-table.button.warning:hover {
+  background: #ff2e09 none;
+}

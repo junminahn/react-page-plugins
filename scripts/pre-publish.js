@@ -48,9 +48,10 @@ fse.writeFileSync(
   Buffer.from(JSON.stringify(publishConfig, null, 2), 'utf-8')
 );
 
-['LICENSE', 'README.md'].forEach(file => {
+['LICENSE', 'README.md', 'src/index.css'].forEach(file => {
+  const parts = file.split('/');
   const src = `${packageRoot}/${file}`;
-  const dest = `${packageRoot}/${output}/${file}`;
+  const dest = `${packageRoot}/${output}/${parts[parts.length - 1]}`;
 
   if (fse.pathExistsSync(src)) {
     fse.copySync(src, dest);

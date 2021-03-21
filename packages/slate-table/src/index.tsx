@@ -22,11 +22,10 @@ import ColorPickerControl from './controls/ColorPickerField';
 import ControlledRangeDisableAcross from './controls/ControlledRangeDisableAcross';
 
 import { withTables, countRowCol } from './core';
-import { emptyCell, emptyRow, emptyTable, getRow, addCell, addRow, cloneTable } from './table-builder';
+import { getRow, addCell, addRow, cloneTable } from './table-builder';
 import { EditableEdit, EditableReadOnly } from './StyledEditable';
 import Spacer from './components/Spacer';
 import Flexbox from './components/Flexbox';
-import { createTheme, ThemeContext } from './theme';
 
 const RangeWrapper = styled.div`
   height: 40px;
@@ -79,8 +78,6 @@ const TableEditable = props => {
   const focused = useFocused();
   const editor = useSlate();
 
-  const { Button } = useContext(ThemeContext);
-
   const { data, readOnly, nodeId } = props;
   const { slate, ...rest } = data;
 
@@ -107,8 +104,8 @@ const TableEditable = props => {
   return (
     <>
       {!readOnly && (
-        <>
-          <Button.Group>
+        <div className="slate-table buttons-row">
+          <div className="slate-table buttons">
             <MarkButton format="bold" icon="bold" />
             <MarkButton format="italic" icon="italic" />
             <MarkButton format="underline" icon="underline" />
@@ -117,17 +114,17 @@ const TableEditable = props => {
             <BlockButton format="block-quote" icon="double-quotes" />
             <BlockButton format="numbered-list" icon="list-ordered" />
             <BlockButton format="bulleted-list" icon="list-unordered" />
-          </Button.Group>
+          </div>
           &nbsp;
-          <Button.Group>
+          <div className="slate-table buttons">
             <AddRowBottom />
             <AddRowTop />
             <AddColumnLeft />
             <AddColumnRight />
             <RemoveColumn />
             <RemoveRow />
-          </Button.Group>
-        </>
+          </div>
+        </div>
       )}
       <StyledEditable
         {...rest}
@@ -235,13 +232,9 @@ const unserialize = data => {
 
 export const tableId = 'slate/ajm/table';
 
-interface tableProps {
-  style?: any;
-}
-const createTablePlugin = (props: tableProps) => {
-  const { style } = props || {};
-  const { Button } = createTheme(style);
+interface tableProps {}
 
+const createTablePlugin = (props: tableProps) => {
   return {
     id: tableId,
     title: 'Table',
@@ -249,11 +242,7 @@ const createTablePlugin = (props: tableProps) => {
     version: 0.1,
     allowClickInside: true,
     Provider: TableProvider,
-    Renderer: props => (
-      <ThemeContext.Provider value={{ Button }}>
-        <TableEditableMemo {...props} />
-      </ThemeContext.Provider>
-    ),
+    Renderer: TableEditableMemo,
     controls,
     createInitialData,
     unserialize,
