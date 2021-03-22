@@ -107,12 +107,14 @@ export const withTables = (editor: Editor) => {
     if (selection) {
       const [cell] = Editor.nodes(editor, {
         match: n =>
-          !Editor.isEditor(n) && SlateElement.isElement(n) && (n.type === 'paragraph' || n.type === 'list-item'),
+          !Editor.isEditor(n) &&
+          SlateElement.isElement(n) &&
+          ['paragraph', 'list-item', 'heading-two'].includes(n.type as string),
       });
 
       if (cell) {
         const [node] = cell;
-        editor.insertNode({ type: node.type, children: [{ text: '' }] });
+        editor.insertNode({ type: node.type === 'list-item' ? 'list-item' : 'paragraph', children: [{ text: '' }] });
       }
     }
   };
