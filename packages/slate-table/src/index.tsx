@@ -1,4 +1,5 @@
 import React, { useState, useCallback, useMemo, useContext } from 'react';
+import type { CellPlugin } from '@react-page/editor';
 import isHotkey from 'is-hotkey';
 import throttle from 'lodash/throttle';
 import times from 'lodash/times';
@@ -41,7 +42,7 @@ const throttleUpdate = throttle(
   { trailing: true }
 );
 
-const TableProvider = props => {
+const TableProvider = (props) => {
   const { nodeId, onChange, data, children } = props;
   const { slate, ...rest } = data;
 
@@ -49,7 +50,7 @@ const TableProvider = props => {
   const editor = useMemo(() => withTables(withHistory(withReact(createEditor()))), []);
 
   const handleChange = useCallback(
-    val => {
+    (val) => {
       setValue(val);
 
       const table = val[0];
@@ -58,7 +59,7 @@ const TableProvider = props => {
 
       if (rest.columnWidth.length !== ccount) {
         const equalWidth = 100 / ccount;
-        rest.columnWidth = times(ccount, v => equalWidth + equalWidth * v);
+        rest.columnWidth = times(ccount, (v) => equalWidth + equalWidth * v);
       }
 
       throttleUpdate({ slate: val, ...rest }, onChange);
@@ -73,7 +74,7 @@ const TableProvider = props => {
   );
 };
 
-const TableEditable = props => {
+const TableEditable = (props) => {
   const selected = useSelected();
   const focused = useFocused();
   const editor = useSlate();
@@ -81,9 +82,9 @@ const TableEditable = props => {
   const { data, readOnly, nodeId } = props;
   const { slate, ...rest } = data;
 
-  const renderElement = useCallback(props => <Element {...props} />, []);
-  const renderLeaf = useCallback(props => <Leaf {...props} />, []);
-  const handleKeyDown = useCallback(event => {
+  const renderElement = useCallback((props) => <Element {...props} />, []);
+  const renderLeaf = useCallback((props) => <Leaf {...props} />, []);
+  const handleKeyDown = useCallback((event) => {
     if (isHotkey('shift+enter', event)) {
       event.preventDefault();
       editor.insertText('\n');
@@ -147,7 +148,7 @@ const ControlComponent = ({ data, onChange }) => {
           <ColorPickerControl
             label="Header Color"
             initialValue={data.headerColor}
-            onChange={headerColor => throttleUpdate({ headerColor }, onChange)}
+            onChange={(headerColor) => throttleUpdate({ headerColor }, onChange)}
           />
         </div>
         <Spacer width="10px" />
@@ -155,7 +156,7 @@ const ControlComponent = ({ data, onChange }) => {
           <ColorPickerControl
             label="Even Color"
             initialValue={data.evenColor}
-            onChange={evenColor => throttleUpdate({ evenColor }, onChange)}
+            onChange={(evenColor) => throttleUpdate({ evenColor }, onChange)}
           />
         </div>
         <Spacer width="10px" />
@@ -163,7 +164,7 @@ const ControlComponent = ({ data, onChange }) => {
           <ColorPickerControl
             label="Odd Color"
             initialValue={data.oddColor}
-            onChange={oddColor => throttleUpdate({ oddColor }, onChange)}
+            onChange={(oddColor) => throttleUpdate({ oddColor }, onChange)}
           />
         </div>
       </Flexbox>
@@ -175,7 +176,7 @@ const ControlComponent = ({ data, onChange }) => {
         <ControlledRangeDisableAcross
           key={data.columnWidth?.length || 'randomkey'}
           initialValue={data.columnWidth}
-          onChange={columnWidth => throttleUpdate({ columnWidth }, onChange)}
+          onChange={(columnWidth) => throttleUpdate({ columnWidth }, onChange)}
         />
       </RangeWrapper>
     </>
@@ -186,7 +187,7 @@ const controls = {
   type: 'custom',
   dark: false,
   Component: React.memo(ControlComponent),
-};
+} as any;
 
 const createInitialData = () => {
   const row = 2;
@@ -211,7 +212,7 @@ const createInitialData = () => {
   };
 };
 
-const unserialize = data => {
+const unserialize = (data) => {
   if (!data.headerColor) data.headerColor = '#fff';
   if (!data.evenColor) data.evenColor = '#fff';
   if (!data.oddColor) data.oddColor = '#fff';
@@ -221,7 +222,7 @@ const unserialize = data => {
 
     if (!data.columnWidth || data.columnWidth.length !== ccount) {
       const equalWidth = 100 / ccount;
-      data.columnWidth = times(ccount, v => equalWidth + equalWidth * v);
+      data.columnWidth = times(ccount, (v) => equalWidth + equalWidth * v);
     }
   } else {
     data.columnWidth = [];
@@ -234,7 +235,7 @@ export const tableId = 'slate/ajm/table';
 
 interface tableProps {}
 
-const createTablePlugin = (props: tableProps) => {
+const createTablePlugin = (props?: tableProps): CellPlugin => {
   return {
     id: tableId,
     title: 'Table',

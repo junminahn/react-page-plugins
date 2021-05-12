@@ -2,12 +2,18 @@
   "name": "@react-page-plugins/slate-table",
   "version": "0.1.0-alpha.9",
   "description": "react-page plugin for slate table",
-  "main": "lib/index.js",
+  "main": "./lib/index.js",
+  "module": "./lib-es/index.js",
+  "typings": "./lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
-    "dev": "tsc -w",
-    "build": "tsc",
-    "build-types": "yarn tsc -d --outDir types",
-    "pre-publish": "node ../../scripts/pre-publish.js --name=slate-table",
+    "build": "npm-run-all --parallel build:lib build:css",
+    "build:watch": "npm-run-all --parallel build:lib:watch build:css:watch",
+    "build:lib": "tsc -p ./tsconfig.json && tsc -p ./tsconfig-es.json",
+    "build:lib:watch": "yarn build:lib -- --watch",
+    "build:css": "postcss --config ../postcss.config.js --dir lib/ src/index.css",
+    "build:css:watch": "npm-run-all build:css -- -w",
+    "clean": "rimraf \"lib\" && rimraf \"lib-es\" && rm -f *.tsbuildinfo",
     "sync-version": "node ../../scripts/sync-version.js --name=slate-table"
   },
   "keywords": [
@@ -16,24 +22,21 @@
     "slate",
     "table"
   ],
-  "publishConfig": {
-    "directory": "lib"
-  },
   "author": "Junmin Ahn",
   "license": "MIT",
   "dependencies": {
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
     "rc-slider": "^9.7.1",
-    "react": "^17.0.1",
     "slate": "^0.59.0",
     "slate-history": "^0.59.0",
     "slate-react": "^0.59.0",
     "styled-components": "^5.2.1"
   },
+  "peerDependencies": {
+    "react": "^17.0.1"
+  },
   "devDependencies": {
-    "@tsconfig/create-react-app": "^1.0.2",
-    "@tsconfig/recommended": "^1.0.1",
     "@types/styled-components": "^5.1.9",
     "typescript": "^4.2.3"
   },
@@ -43,5 +46,8 @@
   },
   "bugs": {
     "url": "https://github.com/junminahn/react-page-plugins/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

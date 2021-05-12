@@ -1,4 +1,5 @@
 // The icons are pulled from https://github.com/Remix-Design/RemixIcon
+import React from 'react';
 import styled from 'styled-components';
 
 export const bold =

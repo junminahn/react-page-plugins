@@ -1,13 +1,10 @@
 {
-  "extends": "@tsconfig/create-react-app/tsconfig.json",
+  "extends": "../tsconfig.settings.json",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",
-    "baseUrl": "src",
-    "noEmit": false,
-    "downlevelIteration": true,
-    "noImplicitAny": false,
-    "removeComments": true
+    "baseUrl": "."
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": ["lib", "node_modules", "src/**/__tests__/**/*.*"]
 }
