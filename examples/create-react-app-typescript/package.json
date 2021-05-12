@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react-page-plugins/slate-table": "0.1.0-alpha.9",
+    "@react-page-plugins/slate-table": "0.1.0-alpha.10",
     "@react-page/editor": "^1.4.1",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
