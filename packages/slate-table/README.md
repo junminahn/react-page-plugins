@@ -20,7 +20,7 @@ import Editor, { ValueWithLegacy } from '@react-page/editor';
 import table from '@react-page-plugins/slate-table';
 
 import '@react-page/editor/lib/index.css';
-import '@react-page-plugins/slate-table/index.css';
+import '@react-page-plugins/slate-table/lib/index.css';
 
 const cellPlugins = [table()];
 
