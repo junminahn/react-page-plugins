@@ -2,6 +2,7 @@
   "name": "react-page-plugins",
   "version": "1.0.0",
   "description": "react-page plugins",
+  "homepage": "https://github.com/junminahn/react-page-plugins",
   "directories": {
     "packages": "packages",
     "example": "examples"

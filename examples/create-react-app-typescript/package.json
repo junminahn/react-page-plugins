@@ -2,6 +2,7 @@
   "name": "create-react-app",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://junminahn.github.io/react-page-plugins",
   "dependencies": {
     "@react-page-plugins/slate-table": "0.1.0-alpha.10",
     "@react-page/editor": "^1.4.1",
