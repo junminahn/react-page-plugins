@@ -1,6 +1,6 @@
 {
   "name": "@react-page-plugins/slate-table",
-  "version": "0.1.0-alpha.10",
+  "version": "0.1.0-alpha.11",
   "description": "react-page plugin for slate table",
   "main": "./lib/index.js",
   "module": "./lib-es/index.js",

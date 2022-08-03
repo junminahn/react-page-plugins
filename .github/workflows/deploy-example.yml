@@ -7,12 +7,12 @@ on:
 
 jobs:
   main:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Install asdf
         uses: asdf-vm/actions/setup@v1
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: asdf-cache
         with:
           path: |
@@ -22,13 +22,12 @@ jobs:
         run: |
           cat .tool-versions | cut -f 1 -d ' ' | xargs -n 1 asdf plugin-add || true
           asdf plugin-update --all
-          bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
           asdf install
           asdf reshim
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path
         run: echo "::set-output name=dir::$(yarn cache dir)"
-      - uses: actions/cache@v2
+      - uses: actions/cache@v3
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
           path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
